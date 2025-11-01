@@ -1,0 +1,135 @@
+/* ---------- BASIC RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- BACKGROUND ANIMATION ---------- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(120deg, #FFD580, #FFAEBC, #FFF5E4);
+  background-size: 400% 400%;
+  animation: bgShift 10s infinite alternate ease-in-out;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@keyframes bgShift {
+  0% { background-position: left; }
+  100% { background-position: right; }
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  text-align: center;
+  padding: 2rem 1rem;
+  animation: fadeIn 2s ease;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: #6b4b1f;
+}
+
+.header p {
+  color: #a67b45;
+  font-size: 1.1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- VIDEO GALLERY ---------- */
+.video-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+
+/* ---------- EACH VIDEO CARD ---------- */
+.video-card {
+  position: relative;
+  width: 320px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(255, 180, 0, 0.3);
+}
+
+/* ---------- VIDEO STYLE ---------- */
+.video {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #f8d77d;
+  cursor: pointer;
+  outline: none;
+}
+
+/* ---------- CAPTION ---------- */
+.caption {
+  padding: 1rem 0.5rem;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #6b4b1f;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #6b4b1f;
+  background: rgba(255, 255, 255, 0.3);
+  letter-spacing: 1px;
+}
+
+/* ---------- FLOATING MUSIC ICON ---------- */
+.music-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 1.8rem;
+  color: #ffd700;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media (max-width: 768px) {
+  .video-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video-card {
+    width: 85%;
+  }
+}

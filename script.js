@@ -1,8 +1,9 @@
-// 🎧 Unmute one video when clicked, pause/mute others
+// 🎧 Unmute a video when clicked, and pause/mute others
 const videos = document.querySelectorAll(".video");
 
 videos.forEach((video) => {
   video.addEventListener("click", () => {
+    // Pause and mute all other videos
     videos.forEach(v => {
       if (v !== video) {
         v.pause();
@@ -10,6 +11,7 @@ videos.forEach((video) => {
       }
     });
 
+    // Toggle play/pause for clicked video
     if (video.paused) {
       video.play();
       video.muted = false;
@@ -20,12 +22,32 @@ videos.forEach((video) => {
   });
 });
 
-// 🎵 Floating rotating music icon
+// Optional 🎵 floating music icon (appears when any video plays)
 const musicIcon = document.createElement("div");
 musicIcon.innerHTML = "🎵";
 musicIcon.classList.add("music-icon");
 document.body.appendChild(musicIcon);
 
+const style = document.createElement("style");
+style.textContent = `
+.music-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 1.8rem;
+  opacity: 0;
+  animation: spin 5s linear infinite;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+`;
+document.head.appendChild(style);
+
+// Show icon only while a video is playing
 videos.forEach(video => {
   video.addEventListener("play", () => musicIcon.style.opacity = "1");
   video.addEventListener("pause", () => {
@@ -34,18 +56,3 @@ videos.forEach(video => {
     }
   });
 });
-
-// 💖✨ Floating background elements (hearts, stars, glowing orbs)
-const floating = document.getElementById("floating");
-const types = ["heart", "star", "orb"];
-
-for (let i = 0; i < 25; i++) {
-  const el = document.createElement("div");
-  el.classList.add(types[Math.floor(Math.random() * types.length)]);
-  if (el.classList.contains("heart")) el.textContent = "💖";
-  if (el.classList.contains("star")) el.textContent = "✨";
-  el.style.left = Math.random() * 100 + "vw";
-  el.style.animationDuration = 8 + Math.random() * 5 + "s";
-  el.style.animationDelay = Math.random() * 5 + "s";
-  floating.appendChild(el);
-}

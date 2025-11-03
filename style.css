@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-/* ---------- BACKGROUND & ANIMATION ---------- */
+/* ---------- BACKGROUND ANIMATION ---------- */
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(120deg, #FFD580, #FFAEBC, #FFF5E4);
@@ -15,8 +15,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  position: relative;
-  overflow: hidden;
 }
 
 @keyframes bgShift {
@@ -24,79 +22,26 @@ body {
   100% { background-position: right; }
 }
 
-/* ---------- FLOATING BACKGROUND ELEMENTS ---------- */
-.floating {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.heart, .star, .orb {
-  position: absolute;
-  opacity: 0.8;
-  animation: floatUp linear infinite;
-  z-index: 0;
-}
-
-.heart {
-  color: #ff6b81;
-  font-size: 18px;
-  animation-duration: 8s;
-}
-
-.star {
-  color: #fffacd;
-  font-size: 12px;
-  animation-duration: 10s;
-}
-
-.orb {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-  animation-duration: 12s;
-}
-
-@keyframes floatUp {
-  from {
-    transform: translateY(100vh) scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(-10vh) scale(1.2);
-    opacity: 1;
-  }
-}
-
 /* ---------- HEADER ---------- */
 .header {
   text-align: center;
   padding: 2rem 1rem;
   animation: fadeIn 2s ease;
-  z-index: 2;
-  position: relative;
 }
 
 .header h1 {
   font-size: 2rem;
   color: #6b4b1f;
-  animation: glowText 3s infinite alternate;
-}
-
-@keyframes glowText {
-  0% { text-shadow: 0 0 10px #ffb347, 0 0 20px #ffcc33; }
-  100% { text-shadow: 0 0 15px #ff9a9e, 0 0 30px #fad0c4; }
 }
 
 .header p {
   color: #a67b45;
   font-size: 1.1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ---------- VIDEO GALLERY ---------- */
@@ -107,8 +52,6 @@ body {
   gap: 20px;
   flex-wrap: wrap;
   padding: 2rem;
-  position: relative;
-  z-index: 2;
 }
 
 /* ---------- EACH VIDEO CARD ---------- */
@@ -160,8 +103,6 @@ body {
   color: #6b4b1f;
   background: rgba(255, 255, 255, 0.3);
   letter-spacing: 1px;
-  position: relative;
-  z-index: 2;
 }
 
 /* ---------- FLOATING MUSIC ICON ---------- */
@@ -174,7 +115,6 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
   animation: spin 5s linear infinite;
-  z-index: 5;
 }
 
 @keyframes spin {
